@@ -1,23 +1,28 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+/**
+ * Class Welcome
+ */
+class Welcome extends MY_Controller
+{
+    /**
+     * Middleware controller.
+     *
+     * @return array
+     */
+    public function middleware()
+    {
+        /**
+         * Return the list of middlewares you want to be applied,
+         * Here is list of some valid options
+         *
+         * loggged_in                    // As used below, simplest, will be applied to all
+         * someother|except:index,list   // This will be only applied to posts()
+         * yet_another_one|only:index    // This will be only applied to index()
+         */
+        return [];
+    }
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->load->view('welcome_message');
