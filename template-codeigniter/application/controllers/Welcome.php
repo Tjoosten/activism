@@ -23,8 +23,24 @@ class Welcome extends MY_Controller
         return [];
     }
 
+    /**
+     * Welcome constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library(['blade']);
+        $this->load->helper(['url']);
+    }
+
+    /**
+     * The index page.
+     *
+     * @see    GET|HEAD: http://www.domain.tld
+     * @return blade view.
+     */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		return $this->blade->render('welcome');
 	}
 }
